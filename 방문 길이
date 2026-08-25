@@ -1,0 +1,40 @@
+#solution
+def solution(dirs):
+    s=[0,0]
+    v=[]
+    cnt=0
+    for i in dirs:
+        a,b=s
+        if i=="L":
+            if -5<=s[0]-1: 
+                s[0]-=1
+                if [a,b,a-1,b] not in v:
+                    cnt+=1
+                    v.append([a,b,a-1,b])
+                    v.append([a-1,b,a,b])
+        elif i=="D":
+            if -5<=s[1]-1: 
+                s[1]-=1
+                if [a,b-1,a,b] not in v:
+                    cnt+=1
+                    v.append([a,b-1,a,b])
+                    v.append([a,b,a,b-1])
+            
+        elif i=="R":
+            if s[0]+1<=5:
+                s[0]+=1
+                if [a+1,b,a,b] not in v:
+                    cnt+=1
+                    v.append([a+1,b,a,b])
+                    v.append([a,b,a+1,b])
+        else:
+            if s[1]+1<=5:
+                s[1]+=1
+                if [a,b+1,a,b] not in v:
+                    cnt+=1
+                    v.append([a,b+1,a,b])
+                    v.append([a,b,a,b+1])
+                
+    return cnt
+                
+            
