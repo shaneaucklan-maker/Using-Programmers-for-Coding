@@ -1,0 +1,27 @@
+#solution
+from math import sqrt
+def solution(r1, r2):
+    
+    cnt_list=[]
+    cnt=0
+    for i in range(-r2,0):
+        ref=r1**2-i**2
+        num=r2**2-i**2
+        if ref<=0:
+            cnt+=2*int(sqrt(num))
+            cnt_list.append(cnt)
+            cnt+=1
+            cnt_list.append(cnt)
+        
+        elif ref>0:
+            if int(sqrt(ref))==sqrt(ref):
+                cnt+=(int(sqrt(num))-sqrt(ref)+1)*2
+                cnt_list.append(cnt)
+            else:
+                cnt+=(int(sqrt(num))-int(sqrt(ref)))*2
+                cnt_list.append(cnt)
+    cnt=cnt*2
+    cnt+=2*(r2-r1+1)
+    cnt_list.append(cnt)
+    
+    return cnt
