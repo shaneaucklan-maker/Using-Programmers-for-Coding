@@ -1,0 +1,28 @@
+#solution
+def solution(tickets):
+    answer=["ICN"]
+    visited=[False]*(len(tickets))
+    tickets.sort()
+    
+    def dfs(location):
+        if len(answer)==len(tickets)+1:
+            return True
+        
+        for i in range(len(tickets)):
+            if not visited[i]:
+                
+                s,e=tickets[i][0],tickets[i][1]
+                if s==location:
+                    visited[i]=True
+                    answer.append(tickets[i][1])
+                    
+                    if dfs(tickets[i][1]):
+                        return True
+                    
+                    visited[i]=False
+                    answer.pop()
+                    
+                    
+    
+    dfs("ICN")
+    return answer
