@@ -1,0 +1,17 @@
+#solution
+def solution(s, skip, index):
+    r=""
+    n=index
+    for i in s:
+        q=ord(i)
+        index=n
+        while index>0:
+            q+=1
+            if q>122:
+                q=q-123+97
+            if chr(q) in skip:
+                index=index
+            else:
+                index-=1
+        r+=chr(q)
+    return r
