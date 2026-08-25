@@ -1,0 +1,47 @@
+#solution
+from collections import deque
+def solution(new_id):
+    b=deque([])
+    an=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_','.','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0']
+    
+    for i in new_id:
+        if i in an:
+            b.append(i.lower())
+    
+    
+    
+    for i in range(len(b)):
+        try:
+            if b[i]=='.' and b[i+1]=='.':
+                b[i]=''
+        except:
+            break
+    interim="".join(list(b))
+    b=deque([])
+    for i in interim:
+        b.append(i)
+            
+    while True:
+        try:
+            if b[0]=='.':
+                b.popleft()
+            if b[-1]=='.':
+                b.pop()
+            if b[0]!='.' and b[-1]!='.':
+                break
+        except:
+            break
+    
+    if not b:
+        b.append("a")
+    while len(b)>=16:
+        b.pop()
+    if b[-1]=='.':
+        b.pop()
+    while len(b)<=2:
+        b.append(b[-1])
+    
+    return "".join(list(b))
+    
+            
+        
