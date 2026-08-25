@@ -1,0 +1,45 @@
+#solution
+def solution(storey):
+    n=len(str(storey))
+    cnt=0
+    check=[]
+    check_cnt=[]
+    for i in range(1,n+1):
+        
+        
+        if storey%(10**i)>5*10**(i-1):
+            cnt+=(10**i-storey%(10**i))//(10**(i-1))
+            
+            
+            check_cnt.append(cnt)
+            
+            storey+=10**i-storey%(10**i)
+            if len(str(storey))!=n:
+                cnt+=1
+            check.append(storey)
+        elif storey%(10**i)==5*10**(i-1):
+                if i==n:
+                    cnt+=5
+                    break
+                else:
+                    storey-=storey%(10**(i))
+                    if storey%(10**(i+1))<5*10**(i):
+                        cnt+=5
+                        check.append(storey)
+                    else:
+                        cnt+=5
+                        
+                        storey+=(10**(i))
+                        if len(str(storey))!=n:
+                            cnt+=1
+                        check.append(storey)
+        else:
+            cnt+=storey%(10**i)//(10**(i-1))
+            storey-=storey%(10**(i))
+            
+            check.append(storey)
+            check_cnt.append(cnt)
+            
+   
+    return cnt
+            
