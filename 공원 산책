@@ -1,0 +1,56 @@
+#solution
+def solution(park, routes):
+    n=len(park)
+    m=len(park[0])
+    start=[]
+    for i in range(n):
+        for j in range(m):
+            if park[i][j]=="S":
+                start.append([i,j])
+    
+    q,w=start.pop()
+    check=[]
+    for i in routes:
+        t,y=q,w
+        a,b=i.split(" ")
+        b=int(b)
+        if a=="E":
+            e=w+(b)
+            if 0<=e<m:
+                for j in range((b)):
+                    w+=1
+                    if park[q][w]=="X":
+                        q,w=t,y
+                        break
+                check.append([q,w])
+        
+        if a=="W":
+            e=w-(b)
+            if 0<=e<m:
+                for j in range((b)):
+                    w-=1
+                    if park[q][w]=="X":
+                        q,w=t,y
+                        break
+            
+                check.append([q,w])
+        if a=="S":
+            e=q+(b)
+            if 0<=e<n:
+                for j in range((b)):
+                    q+=1
+                    if park[q][w]=="X":
+                        q,w=t,y
+                        break
+                check.append([q,w])                
+        if a=="N":
+            e=q-(b)
+            if 0<=e<n:
+                for j in range((b)):
+                    q-=1
+                    if park[q][w]=="X":
+                        q,w=t,y
+                        break
+                check.append([q,w])
+    #return check
+    return q,w
