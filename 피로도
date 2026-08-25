@@ -1,0 +1,16 @@
+#solution
+from itertools import permutations
+def solution(k, dungeons):
+    q=k
+    n=len(dungeons)
+    a=[]
+    for i in list(permutations(dungeons,n)):
+        k=q
+        cnt=0
+        for c,d in i:
+            if k>=c:
+                k-=d
+                cnt+=1
+        a.append(cnt)
+    return max(a)
+    
