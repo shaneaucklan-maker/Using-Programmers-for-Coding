@@ -1,0 +1,74 @@
+#solution
+from collections import deque
+def solution(maps):
+    n=len(maps)
+    m=len(maps[0])
+    road=[[1 for i in range(m)]for j in range(n)]
+    q=deque([])
+    dx=[0, 0, 1, -1]
+    dy=[1, -1, 0, 0]
+    flag=False
+    for i in range(n):
+        for j in range(m):
+            if maps[i][j]=="S":
+                q.append((i,j))
+                flag=True
+                break
+        if flag==True:
+            break
+    
+    anotherstart=[]  
+    flag=False 
+    while q:
+        x,y=q.popleft()
+        for i in range(4):
+            nx=x+dx[i]
+            ny=y+dy[i]
+            if 0<=nx and nx<n and 0<=ny and ny<m:
+                if maps[nx][ny]=="L" and road[nx][ny]==1: 
+                    road[nx][ny]=road[x][y]+1
+                    flag=True
+                    anotherstart.append((nx,ny))
+                    break
+                    
+                    
+                if maps[nx][ny]=="O" and road[nx][ny]==1:
+                    road[nx][ny]=road[x][y]+1
+                    
+                    q.append((nx,ny))    
+                if maps[nx][ny]=="E" and road[nx][ny]==1:
+                    road[nx][ny]=road[x][y]+1
+                    
+                    q.append((nx,ny))    
+                
+                
+    if not flag:
+        return -1
+    q.append(anotherstart[0])
+    
+    visited=[[False for i in range(m)] for j in range(n)]
+    visited[anotherstart[0][0]][anotherstart[0][1]]=True
+    while q:
+        x,y=q.popleft()
+        for i in range(4):
+            nx=x+dx[i]
+            ny=y+dy[i]
+            if 0<=nx and nx<n and 0<=ny and ny<m:
+                if visited[nx][ny]==False and maps[nx][ny]=="O":
+                    road[nx][ny]=road[x][y]+1
+                    visited[nx][ny]=True
+                    q.append((nx,ny))
+                    
+                if visited[nx][ny]==False and maps[nx][ny]=="S":
+                    road[nx][ny]=road[x][y]+1
+                    visited[nx][ny]=True
+                    q.append((nx,ny))
+                    
+                if visited[nx][ny]==False and maps[nx][ny]=="E":
+                    road[nx][ny]=road[x][y]+1
+                    return road[nx][ny]-1
+                
+    return -1
+
+                    
+                
