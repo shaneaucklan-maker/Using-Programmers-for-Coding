@@ -1,0 +1,29 @@
+#solution
+from itertools import combinations
+def solution(orders, course):
+    foodlist=[]
+    b={}
+    result=[]
+    for i in course:
+        
+        for j in orders:
+            for lis in combinations(j,i):
+                interim="".join(sorted(lis))
+                if not b.get(interim):
+                    b[interim]=1
+                else:
+                    b[interim]+=1
+     
+   
+    numlist=[]
+    for _ in course:
+        makeshift=""
+        num=-1 
+        for k in b:
+            if b[k]>num and b[k]>=2 and len(k)==_:
+                num=b[k]
+        numlist.append(num)
+        for k in b:
+            if b[k]==num and len(k)==_:
+                foodlist.append(k)
+    return sorted(foodlist)
