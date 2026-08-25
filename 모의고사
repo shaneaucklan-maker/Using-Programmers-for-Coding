@@ -1,0 +1,23 @@
+#solution
+def solution(answers):
+    a=[1,2,3,4,5]
+    b=[2,1,2,3,2,4,2,5]
+    c=[3,3,1,1,2,2,4,4,5,5]
+    a1=0
+    b1=0
+    c1=0
+    answer=[]
+    for i in range(len(answers)):
+        if a[i%len(a)]==answers[i]:
+            a1+=1
+        if b[i%len(b)]==answers[i]:
+            b1+=1
+        if c[i%len(c)]==answers[i]:
+            c1+=1
+    if a1>=b1 and a1>=c1:
+        answer.append(1)
+    if b1>=a1 and b1>=c1:
+        answer.append(2)
+    if c1>=a1 and c1>=b1:
+        answer.append(3)
+    return answer
