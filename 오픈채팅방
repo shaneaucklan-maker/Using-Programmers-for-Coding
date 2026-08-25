@@ -1,0 +1,35 @@
+#solution
+from collections import deque
+def solution(record):
+    b={}
+    enterlist=deque([])
+    leftlist=deque([])
+    sequence=[]
+    result=[]
+    for i in record:
+        interim=i.split(" ")
+        if interim[0]=="Enter":
+            b[interim[1]]=interim[2]
+            enterlist.append(interim[1])
+            sequence.append("E")
+        elif interim[0]=="Change":
+            b[interim[1]]=interim[2]
+        else:
+            
+            leftlist.append(interim[1])
+            sequence.append("L")
+    
+    for i in sequence:
+        answer=""
+        if i=="E":
+            answer+=b[enterlist.popleft()]
+            answer+="님이 들어왔습니다."
+            result.append(answer)
+            
+        elif i=="L":
+            answer+=b[leftlist.popleft()]
+            answer+="님이 나갔습니다."
+            result.append(answer)
+            
+    return result
+            
