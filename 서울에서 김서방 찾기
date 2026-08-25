@@ -1,0 +1,13 @@
+#solution
+def solution(seoul):
+    answer=0
+    for i in range(len(seoul)):
+        if seoul[i]=="Kim":
+            answer+=i
+    
+    sen="김서방은 "
+    sen+=str(answer)
+    sen+="에 있다"
+    
+    return sen
+            
