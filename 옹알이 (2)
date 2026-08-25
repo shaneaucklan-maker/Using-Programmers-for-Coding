@@ -1,0 +1,21 @@
+#solution
+def solution(babbling):
+    a=["aya","ye","woo","ma"]
+    cnt=0
+    for i in babbling:
+        b={}
+        u=0
+        flag=True
+        for j in a:
+            b[j]=i.count(j)
+            if j*2 in i:
+                flag=False
+                break
+        if flag:
+            for k in b:
+                u+=len(k)*b[k]
+            if u==len(i):
+                cnt+=1
+    return cnt
+        
+    
