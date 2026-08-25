@@ -1,0 +1,18 @@
+#solution
+from collections import deque
+def solution(ingredient):
+    answer=[1,2,3,1]
+    stack=[]
+    ingredient=deque(ingredient)
+    
+    cnt=0
+    for i in ingredient:
+        stack.append(i)
+        while stack and stack[-4::]==[1,2,3,1]:
+            cnt+=1
+            for j in range(4):
+                stack.pop()
+        
+        
+     
+    return cnt
