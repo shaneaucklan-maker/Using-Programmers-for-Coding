@@ -1,0 +1,18 @@
+#solution
+def solution(s):
+    b={"zero":1,"one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9}
+    m=""
+    a=""
+    for i in s:
+        if i.isdigit():
+            a+=i
+        else:
+            m+=i
+            if m=="zero":
+                a+="0"
+                m=""
+            else:
+                if b.get(m):
+                    a+=str(b.get(m))
+                    m=""
+    return int(a)
