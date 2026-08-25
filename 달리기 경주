@@ -1,0 +1,24 @@
+#solution
+from collections import deque
+
+def solution(players, callings):
+    
+    idx={}
+    for i in range(len(players)):
+        idx[players[i]]=i
+    
+    check=[]
+    for i in callings:
+        a=idx[i]
+        b=a-1
+        
+        i1=idx[players[b]]
+        i2=idx[i]
+        idx[players[b]]=i2
+        idx[i]=i1
+        
+        players[a],players[b]=players[b],players[a]
+       
+    return players
+        
+    
