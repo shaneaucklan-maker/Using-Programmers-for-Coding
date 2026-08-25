@@ -1,0 +1,25 @@
+#solution
+from collections import deque
+def solution(priorities, location):
+    queue=deque(priorities)
+    strsu=deque([])
+    for i in range(len(queue)):
+        strsu.append(i)
+    
+    astro=strsu[location]
+    
+    answer=[]
+    answer2=[]
+    while queue:
+        
+        if queue[0]!=max(queue):
+            queue.append(queue.popleft())
+            strsu.append(strsu.popleft())
+                
+        else:
+            answer.append(queue.popleft())
+            answer2.append(strsu.popleft())
+    for i in range(len(answer2)):
+        if answer2[i]==location:
+            return i+1
+            
