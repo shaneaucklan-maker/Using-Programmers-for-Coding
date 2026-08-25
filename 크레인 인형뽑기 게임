@@ -1,0 +1,26 @@
+#solution
+from collections import deque
+def solution(board, moves):
+    row=len(board)
+    queue=deque([])
+    def pick(num):
+        for i in range(row):
+            if board[i][num-1]!=0:
+                queue.append(board[i][num-1])
+                board[i][num-1]=0
+                break
+    for i in moves:
+        pick(i)
+    
+    poplist=deque([])
+    n=len(queue)
+    
+    for i in queue:
+        if not poplist:
+            poplist.append(i)
+        else:
+            if poplist[-1]==i:
+                poplist.pop()
+            else:
+                poplist.append(i)
+    return n-len(poplist)
