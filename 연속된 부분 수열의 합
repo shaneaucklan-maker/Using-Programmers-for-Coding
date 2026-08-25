@@ -1,0 +1,36 @@
+#solution
+def solution(sequence, k):
+    
+    s=0
+    e=0
+    result=[]
+    answer=[]
+    
+    sum=sequence[s]
+    while e!=len(sequence):
+        if sum==k:
+            n=e-s
+            result=(n,s,e)
+            answer.append(result)
+            sum-=sequence[s]
+            s+=1
+            
+        elif sum<k:
+            e+=1
+            if e<len(sequence):
+                sum+=sequence[e]
+            else: 
+                break
+        else:
+            if s<len(sequence):
+                sum-=sequence[s]
+                s+=1
+            else: 
+                break
+            
+            
+    answer.sort()
+    return answer[0][1::]
+        
+            
+            
