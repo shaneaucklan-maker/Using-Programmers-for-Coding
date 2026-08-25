@@ -1,0 +1,35 @@
+#solution
+def solution(n, wires):
+    road=[[]for i in range(n+1)]
+    for s,e in wires:
+        road[s].append(e)
+        road[e].append(s)
+    visited=[False for i in range(n+1)]
+    global cnt
+    cnt=0
+    
+    def dfs(n):
+        global cnt
+        if visited[n]==False:
+            visited[n]=True
+            cnt+=1
+            for i in road[n]:
+                dfs(i)
+    
+    
+    answer2=[]
+    for s,e in wires:
+        road[s].remove(e)
+        road[e].remove(s)
+        visited=[False for i in range(n+1)]
+        answer=[]
+        for i in range(1,n+1):
+            cnt=0
+            if visited[i]==False:
+                dfs(i)
+                answer.append(cnt)
+        answer2.append(abs(answer[1]-answer[0]))
+        road[s].append(e)
+        road[e].append(s)
+    return min(answer2)
+    
