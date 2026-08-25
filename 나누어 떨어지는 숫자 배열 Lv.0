@@ -1,3 +1,4 @@
+#solution
 def solution(arr, divisor):
     answer=[]
     for i in arr:
