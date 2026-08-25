@@ -1,0 +1,60 @@
+#solution
+def solution(numbers, hand):
+    result=""
+    le=-1
+    ri=-1
+    lef=[1,4,7,-1]
+    rig=[3,6,9,-1]
+    cen=[2,5,8,0]
+    
+    for i in numbers:
+        if i in lef:
+            le=i
+            result+="L"
+        elif i in rig:
+            ri=i
+            result+="R"
+        elif i in cen:
+            cnl=0
+            cnr=0
+            backupl=le
+            backupr=ri
+            if i==0:
+                i=11
+            if le in lef:
+                if le==-1:
+                    le=11
+                    cnl+=1
+                else:
+                    le+=1
+                    cnl+=1
+            if ri in rig:
+                if ri==-1:
+                    ri=11
+                    cnr+=1
+                else:
+                    ri-=1
+                    cnr+=1
+            
+            cnr+=abs(ri-i)//3
+            cnl+=abs(le-i)//3
+            
+            if cnr>cnl:
+                result+="L"
+                le=i
+                ri=backupr
+            elif cnr<cnl:
+                result+="R"
+                ri=i
+                le=backupl
+            else:
+                if hand=="left":
+                    result+="L"
+                    le=i
+                    ri=backupr
+                else:
+                    result+="R"
+                    ri=i
+                    le=backupl
+                    
+    return result
