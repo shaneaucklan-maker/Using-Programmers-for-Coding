@@ -1,0 +1,16 @@
+#solution
+def solution(n,a,b):
+    if a>b:
+        a,b=b,a
+     
+    cnt=0
+    while True:
+        cnt+=1
+        if a%2==1 and a+1==b:
+            break
+        
+        else:
+            a=(a+1)//2
+            b=(b+1)//2
+            
+    return cnt
