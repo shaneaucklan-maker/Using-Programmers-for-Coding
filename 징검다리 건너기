@@ -1,0 +1,28 @@
+#solution
+def solution(stones, k):
+    people=0
+    a=max(stones)
+    flag=True
+    left=1
+    right=max(stones)
+    while left<=right:
+        mid=(left+right)//2
+        cnt=0
+        
+        for i in range(len(stones)):
+            if stones[i]<mid:
+                cnt+=1
+            else:
+                cnt=0
+                
+            if cnt==k:
+                break
+                
+        if cnt==k:
+            right=mid-1
+        else:
+            answer=mid
+            left=mid+1
+            
+    return answer
+        
