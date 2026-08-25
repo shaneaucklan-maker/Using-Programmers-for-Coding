@@ -1,0 +1,31 @@
+#solution
+from math import lcm
+from math import gcd
+def solution(arrayA, arrayB):
+        
+    a=gcd(*arrayA)
+    b=gcd(*arrayB)
+    answer=[]
+    
+    flag1=True
+    for i in arrayB:
+        if i%a==0:
+            
+            flag1=False
+            break
+    if flag1==True:
+        answer.append(a)
+    
+    flag2=True
+    for i in arrayA:
+        if i%b==0:
+            
+            flag2=False
+            break     
+    if flag2==True:
+        answer.append(b)
+        
+    if not answer:
+        return 0
+    else:
+        return max(answer)
