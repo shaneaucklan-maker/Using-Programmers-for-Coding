@@ -1,0 +1,53 @@
+#solution
+import sys
+sys.setrecursionlimit(10**5)
+def solution(maps):
+    n=len(maps)
+    m=len(maps[0])
+    
+    maps2=[]
+    
+    dx=[1,-1,0,0]
+    dy=[0,0,1,-1]
+    
+    for i in range(n):
+        interim=[]
+        for j in range(m):
+            interim+=[maps[i][j]]
+        maps2.append(interim)
+    
+    #return maps2
+    global cnt
+    cnt=0 
+    
+    
+    def dfs(x,y):
+        global cnt
+        
+        cnt+=int(maps2[x][y])
+        maps2[x][y]="0"
+        for i in range(4):
+            nx=x+dx[i]
+            ny=y+dy[i]
+            if 0<=nx and nx<n and 0<=ny and ny<m:
+                if maps2[nx][ny]!="0":
+                    
+                    if maps2[nx][ny]!="X":
+                        dfs(nx,ny)
+    
+    result=[]
+    
+    for i in range(n):
+        for j in range(m):
+            
+            if maps2[i][j]!="0":    
+                if maps2[i][j]!="X":
+                    dfs(i,j)
+                    result.append(cnt)
+                    cnt=0
+    
+    if not result:
+        return [-1]
+    
+    return sorted(result)
+                
