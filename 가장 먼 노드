@@ -1,0 +1,29 @@
+#solution
+from collections import deque
+def solution(n, edge):
+    graph=[[]for i in range(n+1)]
+    for a,b in edge:
+        graph[a].append([b,1])
+        graph[b].append([a,1])
+    
+    distance=[int(1e9)]*(n+1)
+    def d(start):
+        q=deque()
+        
+        q.append([start,0])
+        distance[start]=0
+        while q:
+            now,dist=q.popleft()
+            if dist>distance[now]:
+                continue
+            for a,b in graph[now]:
+                if distance[a]>dist+b:
+                    distance[a]=dist+b
+                    q.append([a,distance[a]])
+    d(1)
+    distance.pop(0)
+    cnt=0
+    for i in distance:
+        if i==max(distance):
+            cnt+=1
+    return cnt
