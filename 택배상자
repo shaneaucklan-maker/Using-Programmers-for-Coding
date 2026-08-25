@@ -1,0 +1,27 @@
+#solution
+from collections import deque
+def solution(order):
+    a=[i for i in range(1,len(order)+1)]
+    
+    a=deque(a)
+    order=deque(order)
+    cnt=0
+    c=deque([])
+    
+    for i in range(len(a)):
+        c.appendleft(a[i])
+        while True:
+            if c:
+                if c[0]==order[0]:
+                    c.popleft()
+                    order.popleft()
+                    cnt+=1
+                else:
+                    break
+            else:
+                break
+        
+        
+        
+    return cnt 
+    
