@@ -1,0 +1,19 @@
+#solution
+from collections import deque
+def solution(A, B):
+    
+    A.sort()
+    B.sort()
+    B=deque(B)
+    cnt=0
+    for i in A:
+        while True:
+            if B:
+                q=B.popleft()
+                if q>i:
+                    cnt+=1
+                    break
+            if not B:
+                break
+    return cnt
+            
