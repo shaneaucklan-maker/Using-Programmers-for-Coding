@@ -1,0 +1,33 @@
+#solution
+import heapq
+def solution(operations):
+    q=[]
+    heapq.heapify(q)
+    l=[]
+    for i in operations:
+        if i[0]=="I":
+            heapq.heappush(q,int(i[2::]))
+        elif i=="D -1":
+            if q:
+                heapq.heappop(q)
+            
+        elif i=="D 1":
+            interim=[]
+            if q:
+                while q:
+                    
+                    interim.append(heapq.heappop(q))
+                
+                for j in range(len(interim)):
+                    if j!=len(interim)-1:
+                        
+                    
+                        heapq.heappush(q,interim[j])
+                
+                
+    answer=[]
+    interimm=[]        
+    if q:
+        return [max(q),min(q)]
+    else:
+        return[0,0]
