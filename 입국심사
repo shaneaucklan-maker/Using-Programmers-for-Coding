@@ -1,0 +1,24 @@
+#solution
+def solution(n, times):
+    
+    s=0
+    e=max(times)*n
+    answer=int(1e15)
+    check=[]
+    while s<=e:
+        a=0
+        mid=(s+e)//2
+        for i in times:
+            a+=mid//i
+        #check.append(a)
+        if a>n:
+            e=mid-1
+            answer=min(mid,answer)
+        elif a<n:
+            s=mid+1
+        else:
+            e=mid-1
+            answer=min(mid,answer)
+            check.append(answer)
+    return answer
+    return check
