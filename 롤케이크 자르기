@@ -1,0 +1,32 @@
+#solution
+def solution(topping):
+    n=len(list(set(topping)))
+    jangbu={}
+    for i in topping:
+        if not jangbu.get(str(i)):
+            jangbu[str(i)]=1
+        else:
+            jangbu[str(i)]+=1
+    
+    b={}
+    answer=0
+    bro1,bro2=0,n
+    bro2jangbu=jangbu.copy()
+    bro1jangbu={}
+    for i in topping:
+        bro2jangbu[str(i)]-=1
+        if not bro1jangbu.get(str(i)):
+            bro1jangbu[str(i)]=1
+        else:
+            bro1jangbu[str(i)]+=1
+        bro1=len(bro1jangbu)
+        if not bro2jangbu[str(i)]:
+            bro2-=1
+        
+        if bro1==bro2:
+            answer+=1
+        
+            
+            
+    return answer
+            
