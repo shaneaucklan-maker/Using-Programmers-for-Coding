@@ -1,0 +1,15 @@
+#solution
+from math import sqrt
+def solution(n):
+    def find(a):
+        flag=True
+        for i in range(2,int(sqrt(a))+1):
+            if a%i==0:
+                flag=False
+                break
+        return flag
+    cnt=0
+    for i in range(2,n+1):
+        if find(i):
+            cnt+=1
+    return cnt
