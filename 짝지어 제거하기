@@ -1,0 +1,22 @@
+#solution
+from collections import deque
+def solution(s):
+    q=deque()
+    
+    def erase():
+        for i in range(len(s)):
+            try:
+                if not q:
+                    q.append(s[i])
+                else:
+                    if q[-1]!=s[i]:
+                        q.append(s[i])
+                    else:
+                        q.pop()
+            except:
+                IndexError
+    erase()
+    if q:
+        return 0
+    else:
+        return 1
