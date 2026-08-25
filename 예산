@@ -1,0 +1,10 @@
+#solution
+def solution(d, budget):
+    d.sort()
+    cnt=0
+    cnt2=0
+    for i in d:
+        if cnt+i<=budget:
+            cnt+=i
+            cnt2+=1
+    return cnt2
