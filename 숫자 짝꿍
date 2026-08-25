@@ -1,0 +1,23 @@
+#solution
+from collections import Counter
+def solution(X, Y):
+    
+    b=Counter(X)
+    
+    ex=Counter(Y)
+    answer=[]
+    for i in range(9,-1,-1):
+        if b[str(i)]:
+            q=b[str(i)]
+            if ex[str(i)]:
+                w=ex[str(i)]-q
+                if w>=0:
+                    answer+=[str(i)]*q
+                else:
+                    answer+=[str(i)]*ex[str(i)]
+    if answer==[]:
+        return "-1"
+    k="".join(answer)
+    if k[0]=="0":
+        return "0"
+    return str(k)
