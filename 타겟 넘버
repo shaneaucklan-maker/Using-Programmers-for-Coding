@@ -1,0 +1,15 @@
+#solution
+def solution(numbers, target):
+    answer=0
+    a=[]
+    def dfs(i,answer):
+        if i==len(numbers):
+            a.append(answer)
+        elif i<len(numbers):
+            answer+=numbers[i]
+            dfs(i+1,answer)
+            dfs(i+1,answer-numbers[i]*2)
+            
+            
+    dfs(0,0)
+    return a.count(target)
