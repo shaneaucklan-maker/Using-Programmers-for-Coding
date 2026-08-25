@@ -1,0 +1,28 @@
+#solution
+from collections import deque
+def solution(cards1, cards2, goal):
+    cards1=deque(cards1)
+    cards2=deque(cards2)
+    goal=deque(goal)
+    n=0
+    
+    while True:
+        if goal and cards1 and goal[0]==cards1[0]:
+            cards1.popleft()
+            goal.popleft()
+        elif goal and cards2 and goal[0]==cards2[0]:
+            cards2.popleft()
+            goal.popleft()
+            
+        elif goal and cards1 and goal[0]!=cards1[0]:
+            if cards2 and goal[0]!=cards2[0]:
+                return "No"
+            elif not cards2:
+                return "No"
+        elif goal and not cards1 and cards2 and goal[0]!=cards2[0]:
+            return "No"
+        
+        elif not goal:
+            return "Yes"
+    
+        
