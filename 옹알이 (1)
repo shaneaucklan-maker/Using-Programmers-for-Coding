@@ -1,0 +1,16 @@
+#solution
+def solution(babbling):
+    
+    a=["aya","ye","woo","ma"]
+    cnt=0
+    check=[]
+    for i in babbling:
+        for j in a:
+            i=i.replace(j," ")
+        
+        i=i.replace(" ","")
+        check.append(i)
+        if len(i)==0:
+            cnt+=1
+    return cnt
+    return check
