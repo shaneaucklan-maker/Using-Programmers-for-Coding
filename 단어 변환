@@ -1,0 +1,41 @@
+#solution
+def solution(begin, target, words):
+ 
+    answer=[]
+    answer2=[]
+    def dfs(s,cnt):
+        global flag
+        
+            
+        q=0
+        for i in range(len(target)):
+            if target in words and s[i]!=target[i]:
+                q+=1
+        if q==1:
+            answer.append(target)
+            answer2.append(cnt+1)
+            
+        for i in words:
+            q=0
+            for j in range(len(i)):
+                if s[j]!=i[j]:
+                    q+=1
+            if q==1:
+                words.remove(i)
+                dfs(i,cnt+1)
+    
+    dfs(begin,0)
+    if not answer2:
+        return 0
+    else:
+        return answer2[0]
+    
+    
+    
+                
+            
+    
+        
+        
+            
+            
