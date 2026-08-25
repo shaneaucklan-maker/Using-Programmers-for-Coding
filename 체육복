@@ -1,0 +1,57 @@
+#solution
+from collections import deque
+def solution(n, lost, reserve):
+    lost.sort()
+    reserve.sort()
+    interim={i for i in range(1,n+1)}-set(lost)
+    
+    lost=deque(lost)
+    
+    reserve=deque(reserve)
+    
+    n=n-len(lost)
+    
+    
+    answer={-1}
+    
+    while True:
+        if lost:
+            q=lost[0]
+        if reserve:
+            q1=reserve[0]+1
+            q2=reserve[0]-1
+            qs=reserve[0]
+        if lost and reserve and qs in lost:
+            if qs==lost[0]:
+                
+                answer.add(lost.popleft())
+                reserve.popleft()
+                
+            elif qs>lost[0]:
+                lost.popleft()
+                
+        elif lost and reserve and qs in answer:
+            reserve.popleft()
+            
+                
+            
+        else: 
+            
+            if lost and reserve and q==q1 or q==q2:
+                
+                answer.add(lost.popleft())
+                reserve.popleft()
+        
+            
+            if lost and reserve and q!=q1 and q!=q2:
+                if q>reserve[0]:
+                    reserve.popleft()
+                else:
+                    lost.popleft()
+        if not reserve:
+            break
+        if not lost:
+            break
+            
+    return len(list(answer|interim))-1
+            
