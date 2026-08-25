@@ -1,0 +1,13 @@
+#solution
+def solution(brown, yellow):
+    area=yellow+brown
+    a=[]
+    for i in range(1,yellow+1):
+        if yellow%i==0:
+            a.append(i)
+    
+    for i in a:
+        x=i
+        y=yellow//i
+        if (x+2)*(y+2)==area:
+            return [y+2,x+2]
