@@ -1,0 +1,13 @@
+#solution
+def solution(clothes):
+    b={}
+    for q,w in clothes:
+        if not b.get(w):
+            b[w]=1
+        else:
+            b[w]+=1
+    a=1
+    for i in b:
+        a*=(b[i]+1)
+    
+    return a-1
