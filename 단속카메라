@@ -1,0 +1,14 @@
+#solution
+def solution(routes):
+    
+    cnt=1
+    routes.sort(key=lambda x:x[1])
+    cam=routes[0][-1]
+    check=[]
+    for a,b in routes:
+        if a>cam:
+            cam=b
+            check.append(b)
+            cnt+=1
+    return cnt
+    return check
