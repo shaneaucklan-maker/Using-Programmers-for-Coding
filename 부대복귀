@@ -1,0 +1,35 @@
+#solution
+from collections import deque
+
+def solution(n, roads, sources, destination):
+    graph=[[] for i in range(n+1)]
+    
+    
+    for a,b in roads:
+        graph[a].append([b,1])
+        graph[b].append([a,1])
+    distance=[int(1e9)]*(n+1)
+    #return graph
+    def d(start):
+        
+        
+        q=deque([])
+        q.append([start,0])
+        distance[start]=0
+        while q:
+            now,dist=q.popleft()
+            if dist>distance[now]:
+                continue
+            for a,b in graph[now]:
+                if distance[a]>dist+b:
+                    distance[a]=dist+b
+                    q.append([a,distance[a]])
+    answer=[]   
+    
+    d(destination)
+    for i in sources:
+        if distance[i]!=int(1e9):
+            answer.append(distance[i])
+        else:
+            answer.append(-1)
+    return answer
