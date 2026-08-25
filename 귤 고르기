@@ -1,0 +1,28 @@
+#solution
+def solution(k, tangerine):
+    b={}
+    for i in tangerine:
+        if not b.get(i):
+            b[i]=1
+        else:
+            b[i]+=1
+    a=[]
+    for i in b:
+        a.append([b[i],int(i)])
+    a.sort(reverse=True)
+    an=[]
+    
+    for q,w in a:
+        if k>0 and k-q>=0:
+            k-=q
+            an.append(w)
+        elif k>0 and k-q<0:
+            k=0
+            an.append(w)
+        elif k<=0:
+            break
+    return len(list(set(an)))
+            
+            
+            
+        
