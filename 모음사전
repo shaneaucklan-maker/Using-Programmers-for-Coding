@@ -1,0 +1,55 @@
+#solution
+from collections import deque
+def solution(word):
+    word=list(word)
+    a=[]
+    cnt=0
+    while True:
+        if a==word:
+            break
+        if not a:
+            a.append("A")
+            cnt+=1
+        else:
+            if len(a)<5:
+                a.append("A")
+                cnt+=1
+            elif len(a)==5:
+                if not a[-1]=="U":
+                    if a[-1]=="A":
+                        a[-1]="E"
+                        cnt+=1
+                    elif a[-1]=="E":
+                        a[-1]="I"
+                        cnt+=1
+                    elif a[-1]=="I":
+                        a[-1]="O"
+                        cnt+=1
+                    elif a[-1]=="O":
+                        a[-1]="U"
+                        cnt+=1
+                else:
+                    cnt+=1
+                    while True:
+                        a.pop()
+                        
+                        if not a[-1]=="U":
+                            if a[-1]=="A":
+                                a[-1]="E"
+                                
+                                break
+                            elif a[-1]=="E":
+                                a[-1]="I"
+                                
+                                break
+                            elif a[-1]=="I":
+                                a[-1]="O"
+                                
+                                break
+                            elif a[-1]=="O":
+                                a[-1]="U"
+                                break
+                                
+    return cnt
+                                
+                    
