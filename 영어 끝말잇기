@@ -1,0 +1,22 @@
+#solution
+def solution(n, words):
+    
+    b={}
+            
+    for i in range(len(words)):
+        a=i%n+1
+        c=i//n+1
+        if not b.get(words[i]):
+            b[words[i]]=1
+        else:
+            
+            return [a,c]
+        try:
+            if words[i][-1]!=words[i+1][0]:
+                a=(i+1)%n+1
+                c=(i+1)//n+1
+                return [a,c]
+        except:
+            IndexError
+    return [0,0]
+            
