@@ -1,0 +1,19 @@
+#solution
+def solution(keyinput, board):
+    n=board[0]//2
+    m=board[1]//2
+    start=[0,0]
+    for i in keyinput:
+        if i=="left":
+            if start[0]-1>=-n:
+                start[0]-=1
+        elif i=="right":
+            if start[0]+1<=n:
+                start[0]+=1
+        elif i=="down":
+            if start[1]-1>=-m:
+                start[1]-=1
+        elif i=="up":
+            if start[1]+1<=m:
+                start[1]+=1
+    return start
