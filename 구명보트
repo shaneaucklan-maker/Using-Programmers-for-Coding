@@ -1,0 +1,29 @@
+#solution
+from collections import deque
+def solution(people, limit):
+    people.sort(reverse=True)
+    people=deque(people)
+    n=limit
+    cnt=0
+    p=0
+    q=[]
+    while people:
+        if len(people)>=2:
+            a=people.popleft()
+            b=people.pop()
+            if a+b<=limit:
+                cnt+=1
+            else:
+                people.append(b)
+                b=people.popleft()
+                if a+b<=limit:
+                    cnt+=1
+                else:
+                    people.appendleft(b)
+                    cnt+=1
+        else:
+            a=people.popleft()
+            cnt+=1
+            
+    return cnt
+        
