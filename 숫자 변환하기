@@ -1,0 +1,24 @@
+#solution
+from collections import deque
+def solution(x, y, n):
+    answer=[]
+    q=deque()
+    q.append([x,0])
+    v={-1}
+    while q:
+        a,b=q.popleft()
+        if a==y:
+            return b
+        if a+n<=y and a+n not in v:
+            
+            q.append((a+n,b+1))
+            v.add(a+n)
+        if a*2<=y and a*2 not in v:
+            q.append((a*2,b+1))
+            v.add(a*2)
+        if a*3<=y and a*3 not in v:
+            q.append((a*3,b+1))
+            v.add(a*3)
+        
+
+    return -1
