@@ -1,0 +1,6 @@
+#solution
+def solution(array, commands):
+    an=[]
+    for a,b,c in commands:
+        an.append(sorted(array[a-1:b])[c-1])
+    return an
