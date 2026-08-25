@@ -1,0 +1,37 @@
+#solution
+def solution(n):
+    map=[[0 for j in range(n)]for i in range(n)]
+    
+    def rolling(n,start,p,q):
+        for i in range(n-1):
+            map[start][start+i]+=i+p+q
+    
+        for j in range(n-1):
+            map[j+start][-start-1]+=n-1+j+p+q
+    
+        for k in range(n-1):
+            map[start+n-1][-k-1-start]+=2*(n-1)+k+p+q
+        
+        for l in range(n-1):
+            map[-l-1-start][start]+=l+3*(n-1)+p+q
+    start=0
+    
+    p=0
+    q=1
+    while n>2:
+        
+        rolling(n,start,p,q)
+        q=map[start][start]
+        start+=1
+        p=4*n-4
+        n-=2
+        
+   
+    
+    if n==2:
+        rolling(2,start,p,q)
+    else:
+        map[start][start]=p+q
+        
+    
+    return map
