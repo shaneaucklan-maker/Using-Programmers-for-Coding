@@ -1,0 +1,28 @@
+#solution
+def solution(progresses, speeds):
+    q=[]
+    for i in range(len(progresses)):
+        a=100-progresses[i]
+        if a%speeds[i]==0:
+            q.append(a//speeds[i])
+        else:
+            q.append(a//speeds[i]+1)
+    q.append(101)
+   
+    answer=[]
+    w=[]
+    
+    for i in q:
+        if not answer:
+            answer.append(i)
+        else:
+            if max(answer)>=i:
+                answer.append(i)
+                
+            else:
+                w.append(len(answer))
+                answer=[]
+                answer.append(i)
+                
+    return w
+        
