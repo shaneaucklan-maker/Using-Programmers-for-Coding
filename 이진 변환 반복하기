@@ -1,0 +1,16 @@
+#solution
+def solution(s):
+    
+    cnt2=0
+    n=0
+    while s!="1":
+        cnt=0
+        for i in s:
+            if i=="0":
+                cnt+=1
+        cnt2+=cnt
+        s=len(s)-cnt
+        s=bin(s)[2::]
+        n+=1
+    return [n,cnt2]
+        
