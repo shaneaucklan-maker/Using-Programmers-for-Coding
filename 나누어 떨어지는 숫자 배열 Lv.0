@@ -8,7 +8,7 @@ def solution(arr, divisor):
     else:
         return [-1]
 
-
+#testcase and verification
 if __name__ == "__main__":
     test_cases = [
         ([5, 9, 7, 10], 5, [5, 10]),
