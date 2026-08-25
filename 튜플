@@ -1,0 +1,25 @@
+#solution
+from collections import deque
+def solution(s):
+    s=s.lstrip("{")
+    s=s.rstrip("}")
+    
+    a=list(map(str,s.split("},{")))
+    a.sort(key=lambda x:len(x))
+  
+    q=[]
+    
+    for i in a:
+        q.append(list(map(int,i.split(","))))
+    answer=[]
+    
+    for i in q:
+        
+        for j in i:
+            if not answer:
+                answer.append(j)
+            else:
+                if j not in answer:
+                    answer.append(j)
+    return answer
+    
