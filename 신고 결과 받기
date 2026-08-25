@@ -1,0 +1,28 @@
+#solution
+def solution(id_list, report, k):
+    
+    b={}
+    visited=set([])
+    user={user: set([]) for user in id_list}
+    
+    for i in report:
+        a,c=i.split(" ")
+        
+        if not (a,c) in visited:
+            visited.add((a,c))
+            user[a].add(c)
+            if not b.get(c):
+                b[c]=1
+            else:
+                b[c]+=1
+    #return b
+    result=[]
+    for i in id_list:
+        cnt=0
+        for j in user[i]:
+            
+            if b[j]>=k:
+                cnt+=1
+        result.append(cnt)
+    return result 
+                
