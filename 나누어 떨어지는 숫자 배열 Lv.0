@@ -1,0 +1,22 @@
+def solution(arr, divisor):
+    answer=[]
+    for i in arr:
+        if i%divisor==0:
+            answer.append(i)
+    if answer:
+        return sorted(answer)
+    else:
+        return [-1]
+
+
+if __name__ == "__main__":
+    test_cases = [
+        ([5, 9, 7, 10], 5, [5, 10]),
+        ([2, 36, 1, 3], 1, [1, 2, 3, 36]),
+        ([3, 2, 6], 10, [-1])
+    ]
+    
+    for idx, (arr, divisor, expected) in enumerate(test_cases, 1):
+        result = solution(arr, divisor)
+        status = "Pass" if result == expected else "Fail"
+        print(f"Test {idx}: arr={arr}, divisor={divisor} -> Output: {result} (Expected: {expected}) [{status}]")
