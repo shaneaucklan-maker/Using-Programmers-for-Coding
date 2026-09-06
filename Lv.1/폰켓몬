@@ -1,26 +1,15 @@
 #solution
+from collections import Counter
 def solution(nums):
     n=len(nums)//2
-    
-    b={}
-    for i in nums:
-        if not b.get(str(i)):
-            b[str(i)]=1
-        else:
-            b[str(i)]+=1
-    
-    a=[]
-    cnt=0
-    c={}
-    while n>0:
+    b=Counter(nums)
+    answer={-1}
+    while n>0: 
         for i in b:
-            if b[i]>0:
+            if b.get(i):
                 b[i]-=1
-                if not c.get(i):
-                    c[i]=1
-                else:
-                    c[i]+=1
+                answer.add(int(i))
                 n-=1
                 if n==0:
                     break
-    return len(c)
+    return len(answer)-1
